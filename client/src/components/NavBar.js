@@ -14,20 +14,16 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
-
-      
       <Nav>
-
-
-
-        <Link className="link1" as={Link} to="/new">
+        {/* <Button className="link1" as={Link} to="/new">
           New Entry
-        </Link>
-        <Link className="link1" as={Link} to="/">
+        </Button>
+        <Button className="link1" as={Link} to="/">
           Entries
-        </Link>
-       
-        <Link className="link1" to="/" onClick={handleLogoutClick}>Logout</Link>
+        </Button> */}
+        <Button className="link1" to="/" onClick={handleLogoutClick}>
+          Logout
+        </Button>
       </Nav>
     </Wrapper>
   );

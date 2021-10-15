@@ -1,36 +1,47 @@
 
 import React, { useEffect, useState } from "react";
-import App from "../styles/App.css"
+import "../styles/App.css"
 import  TinderCard  from "react-tinder-card";
+import axios from 'axios';
+import SwipeButtons from "./SwipeButtons";
 
 function CamperCards() {
-  const [people, setPeople] = useState([
-    {
-      name: 'Anna',
-      url: 'https://ca.slack-edge.com/T02MD9XTF-U01HDB7FV4K-g4a57c08aae2-512',
-  },
-  {
-    name: 'Jenna',
-    url: 'client/IMG_7082.JPG',
-}
-  ]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await axios(
+        "/users"
+      );
+      setUsers(response.data);
+    } ;
+    fetchUsers();
+  }, []);
+  //   fetch("/users")
+  //     .then((r) => r.json())
+  //     .then(data);
+     
+  // }, []);
   return (
     <div>
       <h1>Camper Cards</h1>
-      <div className="tinderCards__cardContainer">
-      {people.map(person=> (
+      <div className="card">
+        <div className="tinderCards__cardContainer">
+      {users.map(user=> (
         <TinderCard 
           className="swipe"
-          key={person.name}
-          preventSwipe={['up', 'down']}>
+          key={user.first_name}
+          preventSwipe={["up", "down"]}>
           <div 
-          style={{ backgroundImage: `url(${person.url})`}}
+          style={{ backgroundImage: `url(${user.image_url})`}}
           className="card"
           >
-            <h3>{person.name}</h3>
-          </div>
+            <h3>{user.first_name}, {user.age}   ~ {user.city}, {user.state}</h3>
+          {/* <SwipeButtons/> */}
+         </div>
         </TinderCard>
       ))}
+    </div>
     </div>
     </div>
   )

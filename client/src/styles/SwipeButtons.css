@@ -1,0 +1,30 @@
+.swipeButtons {
+  position: fixed;
+  bottom: 10vh;
+  display: flex;
+  width: 100%;
+  display: flex;
+  /* background-color: white; */
+  justify-content: space-evenly;
+  /* box-shadow: 0 10px 53px 0 rgba(0, 0, 0, 0.3) !important; */
+}
+
+#back {
+  
+  padding: 3vh !important;
+}
+#chat {
+  padding: 3vh !important;
+
+
+}
+#star {
+  padding: 3vh !important;
+  color: yellow;
+
+}
+#X {
+  padding: 3vh !important;
+  color: red;
+
+}

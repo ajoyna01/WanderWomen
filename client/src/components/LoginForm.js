@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Error, Input, FormField, Label } from "../styles";
+import { Button, Error, Input, FormField, Label } from "../styles";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -49,9 +49,9 @@ function LoginForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <button className="link1" variant="fill" color="primary" type="submit">
+        <Button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
-        </button>
+        </Button>
       </FormField>
       <FormField>
         {errors.map((err) => (

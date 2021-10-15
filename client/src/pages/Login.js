@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
+import { Button } from "../styles"
 
 
 function Login({ onLogin }) {
@@ -9,16 +10,16 @@ function Login({ onLogin }) {
 
   return (
     <Wrapper>
-<span className="logo">Camper🏕 Keeper</span>
+<Logo className="logo">Wander:Women</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           <Divider />
           <p>
-
-            <button className="link1" color="secondary" onClick={() => setShowLogin(false)}>
+            Don't have an account? &nbsp;
+            <Button color="secondary" onClick={() => setShowLogin(false)}>
               Sign Up
-            </button>
+            </Button>
           </p>
         </>
       ) : (
@@ -26,10 +27,10 @@ function Login({ onLogin }) {
           <SignUpForm onLogin={onLogin} />
           <Divider />
           <p>
-
-            <button className="link1" color="secondary" onClick={() => setShowLogin(true)}>
+            Already have an account? &nbsp;
+            <Button color="secondary" onClick={() => setShowLogin(true)}>
               Log In
-            </button>
+            </Button>
           </p>
         </>
       )}

@@ -6,7 +6,7 @@ function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [age, setAge] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
@@ -31,14 +31,14 @@ function SignUpForm({ onLogin }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
-        birth_date: birthDate,
+        age,
         city,
         state,
         zip_code: zipCode,
         email,
         image_url: imageUrl,
         bio,
-        camp_type: campType
+        camp_type: campType,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -59,7 +59,7 @@ function SignUpForm({ onLogin }) {
           id="firstname"
           autoComplete="off"
           value={firstName}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value)}
         />
       </FormField>
       <FormField>
@@ -93,6 +93,51 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          type="text"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="age">Age</Label>
+        <Input
+          type="integer"
+          id="age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="city">City</Label>
+        <Input
+          type="text"
+          id="city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="state">State</Label>
+        <Input
+          type="text"
+          id="state"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="zipcode">Zip Code</Label>
+        <Input
+          type="text"
+          id="zip"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+        />
+      </FormField>
+      <FormField>
         <Label htmlFor="imageUrl">Profile Image</Label>
         <Input
           type="text"
@@ -111,13 +156,22 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <button className="link1" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <Label htmlFor="camptype">What Type of Camping Do You Like?</Label>
+        <Input
+          type="text"
+          id="camptype"
+          value={campType}
+          onChange={(e) => setCampType(e.target.value)}
+        />
       </FormField>
       <FormField>
+        <button className="link1" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+      </FormField>
+      {/* <FormField>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-      </FormField>
+      </FormField> */}
     </form>
   );
 }

@@ -3,8 +3,8 @@ import styled from "styled-components";
 function Error({ children }) {
   return (
     <Wrapper>
-
-      {/* <Message>{children}</Message> */}
+      <Alert>!</Alert>
+      <Message>{children}</Message>
     </Wrapper>
   );
 }

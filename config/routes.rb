@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  resources :entries
+  get "/users", to: "users#index"
   # delete "/entries/:id", to: "entries#destroy"
   # patch "/entries/:id", to: "entries#update"
   # get "/entries", to: "entries#index"

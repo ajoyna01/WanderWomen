@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import CamperCards from "../pages/CamperCards";
 import Header from "./Header";
+import SwipeButtons from "../pages/SwipeButtons";
+import Chats from "./Chats";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,20 +22,23 @@ function App() {
   if (!user) return <Login onLogin={setUser} />;
 
   return (
-    <>
-    {/* <div style={{ backgroundImage:}} */}
-    <Header user={user}/>
+  <>
+  <BrowserRouter>
+    
       <NavBar user={user} setUser={setUser} />
         <Switch>
           <Route path="/chat">
-            <h1>Chat</h1>
+            <Header backButton="/" />
+            <Chats/>
           </Route>
           <Route path="/">
-           <CamperCards/>
-          </Route>
+           <Header />
+           <CamperCards />
+           <SwipeButtons />
+           </Route>
         </Switch>
-      
-    </>
+      </BrowserRouter>
+  </>
   );
 }
 
