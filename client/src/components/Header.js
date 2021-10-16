@@ -1,16 +1,19 @@
 import React from "react";
 import '../styles/App.css'
 import { Link, useHistory } from "react-router-dom";
+import "../styles/Header.css";
 
 
-function Header({user, backButton}) {
+function Header({ currentUser, backButton}) {
   const history = useHistory();
   return(
     <div className="header">
       {backButton ? (
-        <span class="material-icons" onClick={() => history.replace(backButton)}>arrow_back_ios</span>
+        <span class="material-icons" onClick={() => history.replace(backButton)}>
+          arrow_back_ios
+        </span>
       ): (
-        <span className="material-icons orange600">face</span>
+        <span className="material-icons">face</span>
       )}
       
      
@@ -20,9 +23,9 @@ function Header({user, backButton}) {
         alt="logo"/>
       </Link>
       <Link to="/chat">
-      <span className="material-icons orange600">try</span>
+      <span className="material-icons">try</span>
       </Link>
-      {/* <span className="login">Hello {user.username}!</span> */}
+      <span className="login">Hello {currentUser.first_name}!</span>
     </div>
   )
 };

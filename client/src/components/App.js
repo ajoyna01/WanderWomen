@@ -6,33 +6,40 @@ import CamperCards from "../pages/CamperCards";
 import Header from "./Header";
 import SwipeButtons from "../pages/SwipeButtons";
 import Chats from "./Chats";
+import ChatScreen from "./ChatScreen";
+import "../styles/App.css"
+
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((currentUser) => setCurrentUser(currentUser));
       }
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!currentUser) return <Login onLogin={setCurrentUser} />;
 
   return (
   <>
   <BrowserRouter>
     
-      <NavBar user={user} setUser={setUser} />
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
         <Switch>
+          <Route path="/chat/:first_name">
+            <Header currentUser={currentUser} backButton="/chat" />
+            <ChatScreen  />
+          </Route>
           <Route path="/chat">
-            <Header backButton="/" />
-            <Chats/>
+            <Header currentUser={currentUser} backButton="/" />
+            <Chats />
           </Route>
           <Route path="/">
-           <Header />
+           <Header currentUser={currentUser}/>
            <CamperCards />
            <SwipeButtons />
            </Route>

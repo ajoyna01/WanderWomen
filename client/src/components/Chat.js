@@ -1,10 +1,20 @@
-import React from 'react'
+import React from "react"
+import "../styles/Chat.css"
+import { Link } from "react-router-dom";
 
-function Chat({name, message, profilePic, timstamp}) {
+
+function Chat({first_name, message, image_url, timestamp}) {
   return (
+    <Link to={`/chat/${first_name}`}>
     <div className="chat">
-      <Avatar className="chat_image" alt={name} src={profilePic}/>
+      <img className="chat_image" alt={first_name} src={image_url} />
+      <div className="chat_details">
+        <h2 className="h2"> {first_name} </h2>
+        <p>{message}</p>
     </div>
+      <p className="chat_timestamp">{timestamp}</p>
+    </div>
+    </Link>
   )
 }
 
