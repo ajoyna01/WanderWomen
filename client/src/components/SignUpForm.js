@@ -149,29 +149,30 @@ function SignUpForm({ onLogin }) {
       <FormField>
         <Label htmlFor="bio">Bio</Label>
         <Textarea
-          rows="3"
-          id="bio"
+          rows="2"
+          
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
       </FormField>
       <FormField>
         <Label htmlFor="camptype">What Type of Camping Do You Like?</Label>
-        <Input
-          type="text"
-          id="camptype"
-          value={campType}
-          onChange={(e) => setCampType(e.target.value)}
-        />
+       <select className="camping_dropdown" id="campingtype" onChange={(e) => setCampType(e.target.value)}>
+   
+       <option value={0}>Choose the type of camping you prefer...</option>
+         <option value="campground">Campground</option>
+         <option value="glamping">Glamping</option>
+         <option value="primitive">Primitive</option>
+       </select>
       </FormField>
       <FormField>
-        <button className="link1" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <Button className="link1" type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
-      {/* <FormField>
+      <FormField>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-      </FormField> */}
+      </FormField>
     </form>
   );
 }

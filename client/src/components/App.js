@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NavBar from "./NavBar";
-import Login from "../pages/Login";
-import CamperCards from "../pages/CamperCards";
+import Login from "./Login";
+import CamperCards from "./CamperCards";
 import Header from "./Header";
-import SwipeButtons from "../pages/SwipeButtons";
+import SwipeButtons from "./SwipeButtons";
 import Chats from "./Chats";
 import ChatScreen from "./ChatScreen";
 import "../styles/App.css"
-
+import UserEditAccountSettings from "./EditAccountSettings";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -23,13 +22,19 @@ function App() {
   }, []);
 
   if (!currentUser) return <Login onLogin={setCurrentUser} />;
-
+  // function handleViewCamperProfile(profileToView) {
+  //   const connectionMade = connection
+  // }
   return (
   <>
   <BrowserRouter>
     
-      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      
         <Switch>
+          <Route path="/profile">
+            <Header currentUser={currentUser} backButton="/" />
+            <UserEditAccountSettings  currentUser={currentUser} />
+          </Route>
           <Route path="/chat/:first_name">
             <Header currentUser={currentUser} backButton="/chat" />
             <ChatScreen  />
@@ -41,7 +46,6 @@ function App() {
           <Route path="/">
            <Header currentUser={currentUser}/>
            <CamperCards />
-           <SwipeButtons />
            </Route>
         </Switch>
       </BrowserRouter>

@@ -1,5 +1,3 @@
 class ConnectionSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :followers
-  has_one :followed_by
+  attributes :id, :follower_id, :followee_id
 end

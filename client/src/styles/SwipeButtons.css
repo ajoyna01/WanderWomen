@@ -1,30 +1,55 @@
 .swipeButtons {
-  position: fixed;
-  bottom: 10vh;
-  width: 100%;
-  display: fixed;
+  position: flex;
+  bottom: 10vh; 
+  width: 120%;
+  
+  
+  top: 70%;
+  -ms-transform: translateY(-10%);
+  transform: translateY(-10%);
+  display: fixed; 
   /* background-color: white;  */
-  justify-content: space-evenly;
+  margin: 0;
    
 }
 
 #back {
   box-shadow: 0 10px 53px 0 rgba(0, 0, 0, 0.3) !important;
   padding: 3vh !important;
+  font-size: 24px;
+  border-radius: 200px;
 }
 #chat {
-  padding: 3vh !important;
+  padding: 2vh !important;
   box-shadow: 0 10px 53px 0 rgba(0, 0, 0, 0.3) !important;
-  
+  font-size: 24px;
+  border-radius: 100px;
+ 
 }
 #star {
-  padding: 3vh !important;
-  color: yellow;
-
+  padding: 2vh !important;
+  color: orange;
+  font-weight: bolder;
+  font-size: 24px;
+  
 }
 #X {
-  padding: 3vh !important;
+  padding: 2vh !important;
   color: red;
   box-shadow: 0 10px 53px 0 rgba(0, 0, 0, 0.3) !important;
   border-right: flex;
+  font-size: 24px;
+ 
 }
+.material-icons {
+  font-weight: bolder;
+  background-color: white;
+  font-style: normal;
+  border-radius: 200px;
+}
+.material-icons.md-dark.md-inactive { 
+  color: rgba(0, 0, 0, 0.26); 
+}
+.material-icons.md-48 
+{ font-size: 48px; }
+

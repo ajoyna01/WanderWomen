@@ -1,8 +1,6 @@
 class ConnectionsController < ApplicationController
   def index
     connections = Connection.all
-    render json: users
+    render json: connections
   end
 end
-
-

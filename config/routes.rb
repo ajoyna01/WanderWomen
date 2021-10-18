@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/users", to: "users#index"
   # delete "/entries/:id", to: "entries#destroy"
-  # patch "/entries/:id", to: "entries#update"
+  patch "/me", to: "users#update"
   # get "/entries", to: "entries#index"
   # get "/entries/:id", to: "entries#show"
   # post "/entries", to: "entries#create"

@@ -11,7 +11,7 @@ const Textarea = styled.textarea`
   line-height: 1.5;
   padding: 4px;
   resize: none;
-  font-family: 'Amatic SC', cursive;
+  /* font-family: ; */
 `;
 
 export default Textarea;
