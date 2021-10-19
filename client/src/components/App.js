@@ -8,23 +8,24 @@ import Chats from "./Chats";
 import ChatScreen from "./ChatScreen";
 import "../styles/App.css"
 import UserEditAccountSettings from "./EditAccountSettings";
+import axios from "axios";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((currentUser) => setCurrentUser(currentUser));
-      }
-    });
+    const fetchCurrentUser = async () => {
+      const response = await axios(
+        "/me"
+      );
+      setCurrentUser(response.data);
+      console.log(response.data)
+    } ;
+    fetchCurrentUser();
   }, []);
-
   if (!currentUser) return <Login onLogin={setCurrentUser} />;
-  // function handleViewCamperProfile(profileToView) {
-  //   const connectionMade = connection
-  // }
+  
   return (
   <>
   <BrowserRouter>
@@ -32,19 +33,19 @@ function App() {
       
         <Switch>
           <Route path="/profile">
-            <Header currentUser={currentUser} backButton="/" />
+            <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/" />
             <UserEditAccountSettings  currentUser={currentUser} />
           </Route>
-          <Route path="/chat/:first_name">
-            <Header currentUser={currentUser} backButton="/chat" />
+          <Route path="/chat/first_name">
+            <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/chat" />
             <ChatScreen  />
           </Route>
           <Route path="/chat">
-            <Header currentUser={currentUser} backButton="/" />
+            <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/" />
             <Chats />
           </Route>
           <Route path="/">
-           <Header currentUser={currentUser}/>
+           <Header setCurrentUser={setCurrentUser} currentUser={currentUser}/>
            <CamperCards />
            </Route>
         </Switch>

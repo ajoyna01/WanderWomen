@@ -33,6 +33,16 @@
   font-size: 24px;
   
 }
+#eye {
+  padding: 2vh !important;
+  font-weight: bolder;
+  font-size: 24px;
+}
+#back {
+  padding: 2vh !important;
+  font-weight: bolder;
+  font-size: 24px;
+}
 #X {
   padding: 2vh !important;
   color: red;

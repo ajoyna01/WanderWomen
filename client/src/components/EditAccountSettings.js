@@ -18,13 +18,13 @@ function UserEditAccountSettings({ currentUser }) {
   const [campType, setCampType] = useState("");
   
   
-  // useEffect(() => {
-  //   fetch("/me")
-  //   .then((r) => r.json())
-  //   .then((userData) => {
-  //     setUserData(userData);
-  //   })
-  // }, []);
+  useEffect(() => {
+    fetch("/me")
+    .then((r) => r.json())
+    .then((userData) => {
+      setUserData(userData);
+    })
+  }, []);
 
   function handleProfileChange() {
     fetch("/me", {
@@ -48,12 +48,12 @@ function UserEditAccountSettings({ currentUser }) {
       .then((r) => r.json())
       .then((updatedProfile) => { 
         console.log(updatedProfile)
-      //   const updatedProfiles = userData.map((u) => {
-      //  if (u.id === updatedProfile.id) return updatedProfile;
-      //     return u;
-  // }
-  // );
-        // setUserData(updatedProfiles);
+        const updatedProfiles = userData.map((u) => {
+       if (u.id === updatedProfile.id) return updatedProfile;
+          return u;
+  }
+  );
+        setUserData(updatedProfiles);
       });
   }
 

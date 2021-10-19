@@ -6,6 +6,7 @@ import "../styles/Header.css";
 
 
 function Header({ currentUser, backButton, setCurrentUser }) {
+  console.log({setCurrentUser})
   const history = useHistory();
 
   function handleLogoutClick() {
@@ -39,9 +40,9 @@ function Header({ currentUser, backButton, setCurrentUser }) {
       <Link to="/chat">
       <span className="material-icons md-48">try</span>
       </Link>
-      <Button className="link1" to="/" onClick={handleLogoutClick}>
-          Logout
-        </Button>
+      <Link className="material-icons md-48" to="/" onClick={handleLogoutClick}>
+          logout
+      </Link>
     </div>
   )
 };

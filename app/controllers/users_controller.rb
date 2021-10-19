@@ -21,14 +21,14 @@ skip_before_action :authorize, only: :create
    def update 
 
         user_to_update = @current_user
-    byebug
+    
         if user_to_update
             if user_to_update.update(update_user_params)
                 render json: user_to_update
             elsif user_to_update.errors
                 render json: { error: user_to_update.errors.full_messages }
             end
-                
+         
         end
 
         
