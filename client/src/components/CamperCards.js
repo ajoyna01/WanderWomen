@@ -6,22 +6,31 @@ import { Button } from "../styles";
 import { Link } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import { ChatEngine } from "react-chat-engine";
+import Profile from "./Profile";
+
 
 function CamperCards() {
   const [users, setUsers] = useState([]);
   const [showBack, setShowBack] = useState(true);
-  
+  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState(0);
+console.log(user)
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await axios(
         "/users"
       );
       setUsers(response.data);
-      console.log(response.data)
+      // console.log(response.data)
     } ;
     fetchUsers();
   }, []);
-  
+    function handleViewProfileClick(userClicked) {
+      setShowBack(false);
+      setUserId(userClicked.id);
+      setUser(userClicked)
+    }
+
   return (
   <div>
     <h1 className="title_buddy">Message your next camping buddy...</h1>
@@ -38,9 +47,9 @@ function CamperCards() {
           style={{ backgroundImage: `url(${user.image_url})`}}
           className="card"
           >
-            <button id="eye"className="material-icons" onClick={() => setShowBack(false)}>
-            visibility</button>
-            <Link as={Link} to="/chat/first_name" id="chat"className="material-icons">chat</Link>
+            <Link to={`/user_profile/${user.id}`}id="eye"className="material-icons" 
+            onClick={() => handleViewProfileClick(user)}>visibility</Link>
+            <Link to={`/chat/first_name`} id="chat"className="material-icons">chat</Link>
             <h2>{user.first_name}, {user.age}   ~ {user.city}, {user.state}</h2>
          </div>
         </TinderCard >
@@ -48,28 +57,10 @@ function CamperCards() {
      
     </div>
     </div>
-    {/* </Link> */}
-    </>
+      </>
     ) : (
       <>
-    <div>
-    {users.map(user=> (
-        <TinderCard 
-          className="swipe"
-          key={user.first_name}
-          >
-        <div 
-          style={{ backgroundColor: "black" }}
-          className="card"
-        >
-          <Link as={Link} to="/chat/first_name" id="chat"className="material-icons">chat</Link>
-            <h3>{user.first_name}, {user.age}   ~ {user.city}, {user.state} &nbsp;</h3>
-            <h3>{user.bio},{user.camp_type}&nbsp;</h3>
-          <button id="back" className="material-icons" onClick={() => setShowBack(true)}>arrow_back_ios</button>
-         </div>
-        </TinderCard >
-       ))} 
-    </div>
+    <Profile setUser={setUser} user={user} userId={userId} setUserId={setUserId} setShowBack={setShowBack} />
     
     </>
     )

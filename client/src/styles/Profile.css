@@ -1,0 +1,20 @@
+.page_container {
+  background-color: w3-light-grey;
+  max-width: 1400px;
+ 
+}
+.profile_pic {
+  width: 100%;
+}
+.cabin {
+ color:teal;
+}
+.location {
+  color: teal;
+}
+.email {
+  color: teal;
+}
+.person_pin {
+  color:darkslategrey
+}

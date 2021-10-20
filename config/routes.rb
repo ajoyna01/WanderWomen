@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   resources :connections
   post "/signup", to: "users#create"
-  get "/me", to: "users#show"
+  get "/me", to: "users#me"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/users", to: "users#index"
+  get "/users/:id", to: "users#show"
   # delete "/entries/:id", to: "entries#destroy"
   patch "/me", to: "users#update"
   # get "/entries", to: "entries#index"

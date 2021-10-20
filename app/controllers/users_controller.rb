@@ -10,9 +10,12 @@ skip_before_action :authorize, only: :create
         users = User.all
         render json: users
     end
-    def show
+    def me
         render json:@current_user, status: :created
     end 
+    def show
+        render json:@current_user, status: :created
+    end
     def destroy
         user = @current_user.find_by(id: params[:id])
         user.destroy

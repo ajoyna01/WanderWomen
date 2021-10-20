@@ -149,7 +149,7 @@ function UserEditAccountSettings({ currentUser }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="bio">Bio</Label>
+        <Label >Bio</Label>
         <Textarea
           rows="2"
           id="bio"

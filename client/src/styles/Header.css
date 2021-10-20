@@ -7,10 +7,20 @@
 }
 
 .header_logo {
-  height: 40 px;
+  height: 10 px;
   object-fit: contain;
+  
 }
 
 .header_icon {
   padding: 20px;
+}
+.logo_text {
+  font-family: 'Festive', cursive;
+  font-size: 56px;
+  /* letter-spacing: 0.015em; */
+  /* word-spacing: 0.001em; */
+  font-weight: bolder;
+  color: rgb(10, 68, 10);
+  text-shadow: 2px 1px black;
 }

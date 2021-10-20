@@ -9,6 +9,8 @@ import ChatScreen from "./ChatScreen";
 import "../styles/App.css"
 import UserEditAccountSettings from "./EditAccountSettings";
 import axios from "axios";
+import Profile from "./Profile";
+import ParksList from "./ParksList";
 
 
 function App() {
@@ -32,6 +34,14 @@ function App() {
     
       
         <Switch>
+          <Route path="/user_profile/id">
+            <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/" />
+            <Profile currentUser={currentUser} />
+          </Route>
+          <Route path="/explore">
+            <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/" />
+            <ParksList currentUser={currentUser}/>
+          </Route>
           <Route path="/profile">
             <Header setCurrentUser={setCurrentUser} currentUser={currentUser} backButton="/" />
             <UserEditAccountSettings  currentUser={currentUser} />

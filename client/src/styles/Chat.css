@@ -6,6 +6,8 @@
   padding: 20px;
   height: 70px;
   border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+  size: 24px;
 }
 a {
   text-decoration: none;
@@ -23,6 +25,8 @@ a {
 }
 .chat_details {
   flex: 1;
+ 
+  
 }
 .chat_details > p {
   color: gray;
